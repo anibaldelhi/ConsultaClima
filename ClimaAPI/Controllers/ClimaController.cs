@@ -20,14 +20,14 @@ namespace ClimaAPI.Controllers
         {
             this.context = context;
         }
-        // GET: api/<ClimaController>
+        // GET: api/<ClimaController> : Listar
         [HttpGet]
         public IQueryable<City> Get()
         {
             return context.city.Include( c => c.weather);
         }
 
-        // GET api/<ClimaController>/5
+        // GET api/<ClimaController>/5 : Obtener por ID
         [HttpGet("{id}",Name ="GetCiudad")]
         public ActionResult Get(int id)
         {
@@ -42,7 +42,7 @@ namespace ClimaAPI.Controllers
             }
         }
 
-        // POST api/<ClimaController>
+        // POST api/<ClimaController> : Agregar nuevo
         [HttpPost]
         public ActionResult Post([FromBody] City city)
         {
@@ -58,7 +58,7 @@ namespace ClimaAPI.Controllers
             }
         }
 
-        // PUT api/<ClimaController>/5
+        // PUT api/<ClimaController>/5 : Modificar
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] City city)
         {
@@ -81,7 +81,7 @@ namespace ClimaAPI.Controllers
             }
         }
 
-        // DELETE api/<ClimaController>/5
+        // DELETE api/<ClimaController>/5 : Eliminar
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
