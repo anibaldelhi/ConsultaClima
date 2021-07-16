@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClimaAPI", "ClimaAPI\ClimaAPI.csproj", "{EAFD15C8-F9DC-48DE-970E-8558EC4F1BC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAFD15C8-F9DC-48DE-970E-8558EC4F1BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFD15C8-F9DC-48DE-970E-8558EC4F1BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFD15C8-F9DC-48DE-970E-8558EC4F1BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFD15C8-F9DC-48DE-970E-8558EC4F1BC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC6F04BC-5D1E-4E43-814D-6D529671B1BA}
+	EndGlobalSection
+EndGlobal
