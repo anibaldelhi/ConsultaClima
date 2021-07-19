@@ -18,11 +18,14 @@ namespace ClimaAPI.Context
 
         public DbSet<Weather> weather { get; set; }
 
+        public DbSet<Coord> coord { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<City>().HasMany(c => c.weather);
 
-
+            modelBuilder.Entity<City>().HasOne(c => c.coord).WithOne(co => co.city)
+                .HasForeignKey<Coord>(co => co.idCiudad);
         }
     }
 }
