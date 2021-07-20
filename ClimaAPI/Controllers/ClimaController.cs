@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ClimaAPI.Context;
 using ClimaAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ClimaAPI.Controllers
 {
@@ -20,20 +17,20 @@ namespace ClimaAPI.Controllers
         {
             this.context = context;
         }
-        // GET: api/<ClimaController> : Listar
+        // Listar
         [HttpGet]
         public IQueryable<City> Get()
         {
-            return context.city.Include( c => c.weather);
+            return context.city.Include(c => c.weather).Include(c => c.coord);
         }
 
-        // GET api/<ClimaController>/5 : Obtener por ID
+        // Obtener por ID
         [HttpGet("{id}",Name ="GetCiudad")]
         public ActionResult Get(int id)
         {
             try
             {
-                var ciudad = context.city.Include(c => c.weather).FirstOrDefault(g => g.id == id);
+                var ciudad = context.city.Include(c => c.weather).Include(c => c.coord).FirstOrDefault(g => g.id == id);
                 return Ok(ciudad);
             }
             catch (Exception ex)
@@ -42,7 +39,7 @@ namespace ClimaAPI.Controllers
             }
         }
 
-        // POST api/<ClimaController> : Agregar nuevo
+        // Crear
         [HttpPost]
         public ActionResult Post([FromBody] City city)
         {
@@ -58,7 +55,7 @@ namespace ClimaAPI.Controllers
             }
         }
 
-        // PUT api/<ClimaController>/5 : Modificar
+        // Actualizar
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] City city)
         {
@@ -81,7 +78,7 @@ namespace ClimaAPI.Controllers
             }
         }
 
-        // DELETE api/<ClimaController>/5 : Eliminar
+        //  Eliminar
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
