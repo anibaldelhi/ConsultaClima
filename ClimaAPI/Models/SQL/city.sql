@@ -16,12 +16,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[city](
+CREATE TABLE [dbo].[City](
 	[id] [int] NOT NULL,
-	[name] [varchar](500),
-	[timezone] [int],
-	[lon] [float] ,
-	[lat] [float],
+	[name] [varchar](500) NULL,
+	[timezone] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
