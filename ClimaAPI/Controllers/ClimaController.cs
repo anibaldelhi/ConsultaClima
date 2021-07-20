@@ -72,7 +72,11 @@ namespace ClimaAPI.Controllers
             {
                 if (city.id == id)
                 {
-                    context.Entry(city).State = EntityState.Modified;
+                    context.Entry(city).State = EntityState.Unchanged;
+                    context.Entry(city.coord).State = EntityState.Unchanged;
+                    context.Entry(city).Property(p => p.timezone).IsModified = true;
+                    context.Entry(city.coord).Property(p => p.lat).IsModified = true;
+                    context.Entry(city.coord).Property(p => p.lon).IsModified = true;
                     context.SaveChanges();
                     return Ok(city);
                 }
