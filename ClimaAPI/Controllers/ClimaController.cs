@@ -74,7 +74,7 @@ namespace ClimaAPI.Controllers
                 {
                     context.Entry(city).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetCity", new { id = city.id }, city);
+                    return Ok(city);
                 }
                 else
                 {
@@ -93,10 +93,12 @@ namespace ClimaAPI.Controllers
         {
             try
             {
-                var ciudad = context.city.FirstOrDefault(g => g.id == id);
-                if(ciudad != null)
+                var ciudad = context.city.Include(c => c.coord).Include(c => c.weather).FirstOrDefault(c => c.id == id);
+
+                if (ciudad != null)
                 {
-                    context.city.Remove(ciudad);
+                    ciudad.weather.Clear();
+                    context.Entry(ciudad).State = EntityState.Deleted;
                     context.SaveChanges();
                     return Ok(id);
                 }
