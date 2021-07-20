@@ -22,10 +22,11 @@ namespace ClimaAPI.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<City>().HasMany(c => c.weather);
+            modelBuilder.Entity<City>().HasMany(c => c.weather).WithMany(w => w.city)
+                .UsingEntity(j => j.ToTable("CityWeather"));
 
             modelBuilder.Entity<City>().HasOne(c => c.coord).WithOne(co => co.city)
-                .HasForeignKey<Coord>(co => co.idCiudad);
+                .HasForeignKey<Coord>(co => co.idCiudad).OnDelete(DeleteBehavior.ClientCascade);
         }
     }
 }

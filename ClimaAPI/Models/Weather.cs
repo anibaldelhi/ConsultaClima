@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ClimaAPI.Models
 {
@@ -12,6 +14,7 @@ namespace ClimaAPI.Models
 
         public string description { get; set; }
 
-        public int cityid { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<City> city { get; set; }
     }
 }
