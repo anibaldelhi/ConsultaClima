@@ -45,17 +45,8 @@ namespace ClimaAPI.Controllers
         {
             try
             {
-                context.Add(city);
-
-                foreach (Weather oWeather in city.weather)
-                {
-                    var clima = context.weather.Find(oWeather.id);
-                    if (clima != null)
-                        context.Entry(clima).State = EntityState.Unchanged;
-                }
-
+                context.city.Add(city);
                 context.SaveChanges();
-
                 return Ok();
             }
             catch (Exception ex)
